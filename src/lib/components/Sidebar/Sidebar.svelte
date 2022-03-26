@@ -14,5 +14,5 @@
             <SideNode node={node}></SideNode>
         {/each}
     </div>
-    <Switch bind:checked={editMode}></Switch>
+    <span class="flex flex-row justify-between items-center">Edit Mode: <Switch bind:checked={editMode}></Switch></span>
 </div>
