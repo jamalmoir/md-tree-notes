@@ -71,7 +71,7 @@
 	<div class="flex flex-row w-full h-full">
 		<Sidebar {nodes} bind:editMode width={sidebarWidth} />
 		<div
-            class="bg-black h-full w-1 cursor-col-resize"
+            class="bg-neutral-dark h-full w-1 cursor-col-resize"
             on:mousedown={handleMoveStart}
         ></div>
 		<div class="w-full h-full">

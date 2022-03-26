@@ -23,8 +23,8 @@ module.exports = {
       "white": "var(--white)",
       "neutral-dark": "var(--neutral-dark)",
       "neutral-light": "var(--neutral-light)",
-
       "background": "var(--background)",
+      "text": "var(--text)",
       "secondary-text": "var(--secondary-text)",
     },
     fontSize: {

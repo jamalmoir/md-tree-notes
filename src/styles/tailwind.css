@@ -5,19 +5,20 @@
 body {
     --primary: #5bb6e1;
 
-    --success: #64D049;
+    --success: #058b0d;
     --warning: #F2DB10;
-    --danger: #D05149;
-    --info: #8490F9;
+    --danger: #de5154;
+    --info: #474f7f;
 
     --white: #FFFFFF;
     --black: #000000;
-    --neutral-dark: #1A4051;
-    --neutral-light: #E3F6FF;
+    --neutral-dark: #2f3235;
+    --neutral-light: #e8e8e8;
     --off-white: #fafafa;
 
-    --background: #F2F6FF;
-    --secondary-text: #595C7B;
+    --background: #fbfbfb;
+    --text: #565253;
+    --secondary-text: #b7bfc1;
 
     --text-sm: 0.875rem;
     --text-md: 1.125rem;
