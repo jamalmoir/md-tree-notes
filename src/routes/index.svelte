@@ -43,6 +43,7 @@
 		},
 	]
     let editMode = true
+	let content = ""
 
     let sidebarWidth = 250
     let resizingSidebar = false
@@ -75,7 +76,7 @@
         ></div>
 		<div class="w-full h-full">
 			<!-- Editor -->
-			<ContentEditor bind:editMode />
+			<ContentEditor bind:editMode bind:content />
 		</div>
 	</div>
 

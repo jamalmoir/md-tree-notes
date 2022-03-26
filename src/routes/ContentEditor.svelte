@@ -1,7 +1,7 @@
 <script lang="ts">
     export let editMode
+    export let content = ""
 
-    let content = ""
     let parsedContent = ""
 
     function parseContent(content: string): string {
