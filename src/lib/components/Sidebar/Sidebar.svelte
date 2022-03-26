@@ -1,10 +1,10 @@
 <script lang="ts">
-	import SideNode from './SideNode.svelte'
+	import SideNode from '$lib/components/Sidebar/SideNode.svelte'
+    import Switch from '$lib/components/Switch.svelte'
 
     export let nodes
     export let width = 250
     export let editMode
-import Switch from './Switch.svelte'
 </script>
 
 <div class="flex flex-col justify-between bg-neutral-dark text-white p-sm h-full" style="width: {width}px">

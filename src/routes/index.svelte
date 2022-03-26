@@ -1,7 +1,7 @@
 <script lang="ts">
-	import ContentEditor from './ContentEditor.svelte'
     import type { Node } from '$lib/types'
-	import Sidebar from './Sidebar.svelte'
+	import ContentEditor from '$lib/components/ContentEditor.svelte'
+	import Sidebar from '$lib/components/Sidebar/Sidebar.svelte'
 
 	let nodes: Node[] = [
 		{
