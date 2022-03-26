@@ -1,47 +1,9 @@
 <script lang="ts">
-    import type { Node } from '$lib/types'
 	import ContentEditor from '$lib/components/ContentEditor.svelte'
 	import Sidebar from '$lib/components/Sidebar/Sidebar.svelte'
+	import { nodes } from '$lib/stores';
+	import NodeMenu from '$lib/components/ContextMenu/NodeMenu.svelte';
 
-	let nodes: Node[] = [
-		{
-			name: 'Test1',
-			position: 1,
-			colour: 'red',
-			tags: [],
-			children: [
-				{
-					name: 'Test Child',
-					position: 1,
-					colour: 'blue',
-					tags: [],
-					children: [
-						{
-							name: 'Test Child of Child',
-							position: 1,
-							colour: 'green',
-							tags: [],
-							children: [],
-						}
-					],
-				},
-				{
-					name: 'Test Child2',
-					position: 2,
-					colour: 'blue',
-					tags: [],
-					children: [],
-				}
-			],
-		},
-		{
-			name: 'Test2',
-			position: 1,
-			colour: 'red',
-			tags: [],
-			children: [],
-		},
-	]
     let editMode = true
 	let content = ""
 
@@ -66,6 +28,7 @@
 <svelte:body on:mousemove={handleMove} on:mouseup={handleMoveEnd}></svelte:body>
 
 <div class="w-full h-screen">
+    <NodeMenu />
 	<header></header>
 
 	<div class="flex flex-row w-full h-full">

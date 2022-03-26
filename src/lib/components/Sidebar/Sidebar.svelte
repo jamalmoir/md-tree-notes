@@ -7,10 +7,10 @@
     export let editMode
 </script>
 
-<div class="flex flex-col justify-between bg-neutral-dark text-white p-sm h-full" style="width: {width}px">
+<div name="sidebar" class="flex flex-col justify-between bg-neutral-dark text-white p-sm h-full" style="width: {width}px">
     <!-- Node tree -->
     <div>
-        {#each nodes as node}
+        {#each $nodes as node}
             <SideNode node={node}></SideNode>
         {/each}
     </div>

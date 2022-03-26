@@ -1,6 +1,5 @@
 <script lang="ts">
     import type { Node } from '$lib/types'
-    import NodeMenu from '../ContextMenu/NodeMenu.svelte';
 
     export let node: Node;
     export let depth: number = 0;
@@ -9,9 +8,8 @@
 </script>
 
 <div class="flex flex-row" style="margin-left: {1 * depth}rem">
-    <NodeMenu />
     <div>
-        <div name="side-node" class="flex flex-row">
+        <div name={"side-node " + node.id} class="flex flex-row">
             {#if node.children.length}
                 <div class="flex items-center mr-1 text-xs text-secondary-text" on:click={() => showChildren=!showChildren}>
                     {#if showChildren}
