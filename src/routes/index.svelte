@@ -1,11 +1,10 @@
 <script lang="ts">
 	import ContentEditor from '$lib/components/ContentEditor.svelte'
 	import Sidebar from '$lib/components/Sidebar/Sidebar.svelte'
-	import { nodes } from '$lib/stores';
+	import { nodes, selectedNode } from '$lib/stores';
 	import NodeMenu from '$lib/components/ContextMenu/NodeMenu.svelte';
 
     let editMode = true
-	let content = ""
 
     let sidebarWidth = 250
     let resizingSidebar = false
@@ -39,7 +38,7 @@
         ></div>
 		<div class="w-full h-full">
 			<!-- Editor -->
-			<ContentEditor bind:editMode bind:content />
+			<ContentEditor bind:editMode bind:node={$selectedNode} />
 		</div>
 	</div>
 

@@ -1,10 +1,16 @@
 <script lang="ts">
+import { selectedNode } from '$lib/stores';
+
     import type { Node } from '$lib/types'
 
     export let node: Node;
     export let depth: number = 0;
 
     let showChildren = false
+
+    function selectNode() {
+        selectedNode.update(oldNode => node)
+    }
 </script>
 
 <div class="flex flex-row" style="margin-left: {1 * depth}rem">
@@ -21,7 +27,9 @@
             {:else}
                 <div class="mr-1 text-neutral-dark text-xs">ᐳ</div>
             {/if}
-            {node.name}
+            <div class="w-full" on:click={selectNode}>
+                {node.name}
+            </div>
         </div>
         {#if showChildren}
             {#each node.children as child}

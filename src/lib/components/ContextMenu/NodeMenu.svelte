@@ -12,7 +12,14 @@
 	const availableMenus = ['side-node', 'sidebar']
 
 	async function onRightClick(e) {
-		let args = e.target.getAttribute('name').split(' ')
+		let targetNameAttr = e.target.getAttribute('name')
+		
+		if (!targetNameAttr) {
+			return
+		}
+
+		let args = targetNameAttr.split(' ')
+
 		targetName = args[0]
 		targetArg = args[1]
 

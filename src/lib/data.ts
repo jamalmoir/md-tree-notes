@@ -1,6 +1,7 @@
+import { nodes, selectedNode } from "./stores"
+
 import type { Node } from "./types"
 import { get } from "svelte/store"
-import { nodes } from "./stores"
 
 export const dataHandler = {
     core: {
@@ -51,6 +52,8 @@ function createNode(name: string, parentID?: string) {
         }
         return nodeList
     })
+
+    selectedNode.update(oldNode => node)
 }
 
 

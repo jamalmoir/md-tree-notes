@@ -1,11 +1,16 @@
 <script lang="ts">
+    import type { Node } from '$lib/types'
     export let editMode
-    export let content = ""
+    export let node: Node
 
     let parsedContent = ""
 
-    function parseContent(content: string): string {
+    function parseContent(content: string | null): string {
         let parsed = content;
+
+        if (parsed === null) {
+            return "Get started by creating a new node by right-clicking the side bar."
+        }
 
         const rules = [
             // headings
@@ -47,12 +52,16 @@
 
         return parsed
     }
-    $: parsedContent = parseContent(content)
+    $: parsedContent = parseContent(node ? node.markdown : null)
 </script>
 
 <div class="flex flex-row h-full bg-background text-text">
     {#if editMode}
-        <textarea class="w-full h-full p-md overflow-y-auto resize-none outline-0" bind:value={content} autofocus />
+        {#if node}
+            <textarea class="w-full h-full p-md overflow-y-auto resize-none outline-0" bind:value={node.markdown} autofocus />
+        {:else}
+            <textarea class="w-full h-full p-md overflow-y-auto resize-none outline-0" disabled />
+        {/if}
     {/if}
     <div class="w-full h-full p-md overflow-y-auto border-l-2 border-l-neutral-light">
         {@html parsedContent }
