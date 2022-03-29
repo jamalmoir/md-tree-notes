@@ -11,6 +11,6 @@ export type Node = {
 export type DataHandler = {
     getNodes(): Node[]
     createNode(name: string, parentId?: string): Node
-    updateNode(node: Node): Node
-    deleteNode(node: Node): Node
+    updateNode(nodeId: string, name: string): Node
+    deleteNode(nodeId: string): void
 }

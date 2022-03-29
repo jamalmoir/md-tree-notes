@@ -44,6 +44,22 @@
 			$dataHandler.createNode(name, parent)
 		}
 	}
+
+	function updateNode(e: CustomEvent, nodeId: string) {
+		const name = prompt('Enter new name for this node')
+
+		if (name !== null) {
+			$dataHandler.updateNode(nodeId, name)
+		}
+	}
+
+	function deleteNode(e: CustomEvent, nodeId: string) {
+		const deleteChoice = confirm('Are you sure you want to delete this node?')
+
+		if (deleteChoice) {
+			$dataHandler.deleteNode(nodeId)
+		}
+	}
 </script>
 
 {#if showMenu}
@@ -55,6 +71,12 @@
 			<MenuItem
 				on:click={(e) => createNode(e, targetArg)}
 				text="Create sub-node" />
+			<MenuItem
+				on:click={(e) => updateNode(e, targetArg)}
+				text="Update node" />
+			<MenuItem
+				on:click={(e) => deleteNode(e, targetArg)}
+				text="Delete node" />
 		{:else if targetName === 'sidebar'}
 			<MenuItem
 				on:click={createNode}
