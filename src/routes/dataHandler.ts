@@ -21,7 +21,7 @@ export const dataHandler: DataHandler = {
         }
         nodes.update(nodeList => {
             if (parentID) {
-                const parent = findNode(nodeList, parseInt(parentID))
+                const {node: parent} = findNode(nodeList, parseInt(parentID))
                 const pos = parent.children.length + 1
                 node.position = pos
                 parent.children.push(node)
@@ -38,25 +38,41 @@ export const dataHandler: DataHandler = {
         return get(selectedNode)
     },
 
-    updateNode(node: Node) {
-        return node
+    updateNode(nodeId: string, name: string) {
+        let updatedNode = null;
+
+        nodes.update(nodeList => {
+            const {node} = findNode(nodeList, parseInt(nodeId))
+            node.name = name
+            updatedNode = node
+
+            return nodeList
+        })
+
+        return updatedNode
     },
 
-    deleteNode(node: Node) {
-        return node
+    deleteNode(nodeId: string) {
+        nodes.update(nodeList => {
+            const {parent, node} = findNode(nodeList, parseInt(nodeId))
+            const index = parent.children.indexOf(node)
+            parent.children.splice(index, 1)
+
+            return nodeList
+        })
     },
 }
 
 
-function findNode(nodeList: Node[], targetID: number): Node | null {
+function findNode(nodeList: Node[], targetID: number): {node: Node, parent: Node | null} | null  {
     for (const node of nodeList) {
         if (node.id === targetID) {
-            return node
+            return {node, parent: null}
         } else if (node.children.length) {
             const childResults = findNode(node.children, targetID)
 
             if (childResults) {
-                return childResults
+                return childResults.parent ? childResults : {node: childResults.node, parent: node}
             }
         }
     }
