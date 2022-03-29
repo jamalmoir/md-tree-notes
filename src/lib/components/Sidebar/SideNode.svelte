@@ -1,5 +1,5 @@
 <script lang="ts">
-import { selectedNode } from '$lib/stores';
+    import { selectedNode } from '$lib/stores';
 
     import type { Node } from '$lib/types'
 

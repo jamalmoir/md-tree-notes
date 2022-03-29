@@ -1,8 +1,7 @@
 <script lang='ts'>
 	import Menu from '$lib/components/ContextMenu/ContextMenu.svelte';
 	import MenuItem from '$lib/components/ContextMenu/MenuItem.svelte';
-	import { dataHandler } from '$lib/data';
-	import type { Node } from '$lib/types'
+	import { dataHandler } from '$lib/stores';
 	
 	let pos = { x: 0, y: 0 }
 	let showMenu = false
@@ -38,11 +37,11 @@
 		showMenu = false;
 	}
 
-	function createNode(e: CustomEvent, parent?: Node) {
+	function createNode(e: CustomEvent, parent?: string) {
 		const name = prompt('Enter new node name')
 
 		if (name !== null) {
-			dataHandler.execute('createNode', name, parent)
+			$dataHandler.createNode(name, parent)
 		}
 	}
 </script>

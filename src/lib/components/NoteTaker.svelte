@@ -1,11 +1,15 @@
 <script lang="ts">
 	import ContentEditor from '$lib/components/ContentEditor.svelte'
 	import Sidebar from '$lib/components/Sidebar/Sidebar.svelte'
-	import { nodes, selectedNode } from '$lib/stores';
+	import { dataHandler, nodes, selectedNode } from '$lib/stores';
 	import NodeMenu from '$lib/components/ContextMenu/NodeMenu.svelte';
 
-    let editMode = true
+    let dHandler
+    export {dHandler as dataHandler}
 
+    dataHandler.set(dHandler)
+
+    let editMode = true
     let sidebarWidth = 250
     let resizingSidebar = false
 
