@@ -13,9 +13,9 @@ import { selectedNode } from '$lib/stores';
     }
 </script>
 
-<div class="flex flex-row" style="margin-left: {1 * depth}rem">
-    <div>
-        <div name={"side-node " + node.id} class="flex flex-row">
+<div class="flex flex-row w-full" style="margin-left: {1 * depth}rem">
+    <div class="w-full">
+        <div class="flex flex-row w-full">
             {#if node.children.length}
                 <div class="flex items-center mr-1 text-xs text-secondary-text" on:click={() => showChildren=!showChildren}>
                     {#if showChildren}
@@ -27,7 +27,13 @@ import { selectedNode } from '$lib/stores';
             {:else}
                 <div class="mr-1 text-neutral-dark text-xs">ᐳ</div>
             {/if}
-            <div class="w-full" on:click={selectNode}>
+            <div name={"side-node " + node.id}
+                 class="w-full"
+                 class:text-secondary-text={$selectedNode.id !== node.id}
+                 class:text-white={$selectedNode.id === node.id}
+                 class:border-background={$selectedNode.id === node.id}
+                 class:border-r-4={$selectedNode.id === node.id}
+                 on:click={selectNode}>
                 {node.name}
             </div>
         </div>
